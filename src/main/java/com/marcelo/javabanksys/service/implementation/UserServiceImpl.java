@@ -2,9 +2,11 @@ package com.marcelo.javabanksys.service.implementation;
 
 import com.marcelo.javabanksys.dto.AccountInfo;
 import com.marcelo.javabanksys.dto.BankResponse;
+import com.marcelo.javabanksys.dto.EmailDetails;
 import com.marcelo.javabanksys.dto.UserRequest;
 import com.marcelo.javabanksys.entity.User;
 import com.marcelo.javabanksys.repository.UserRepository;
+import com.marcelo.javabanksys.service.EmailService;
 import com.marcelo.javabanksys.service.UserService;
 import com.marcelo.javabanksys.utils.AccountUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    EmailService emailService;
 
     @Override
     public BankResponse createAccount(UserRequest userRequest) {
@@ -44,6 +49,17 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         User savedUser = userRepository.save(newUser);
+
+        //Send email alert
+        EmailDetails emailDetails = EmailDetails.builder()
+                .recipient(savedUser.getEmail())
+                .subject("ACCOUNT CREATION SUCCESS")
+                .messageBody("Your account has been successfully created!" +
+                        "\nAccount details:" +
+                        "\nAccount name: " + savedUser.getFirstName() + " " + savedUser.getLastName() +
+                        "\nAccount number: " + savedUser.getAccountNumber())
+                .build();
+        emailService.SendEmailAlert(emailDetails);
 
         return BankResponse.builder()
                 .responseCode(AccountUtils.ACCOUNT_CREATION_SUCCESS_CODE)
