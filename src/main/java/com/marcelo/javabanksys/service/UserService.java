@@ -1,9 +1,6 @@
 package com.marcelo.javabanksys.service;
 
-import com.marcelo.javabanksys.dto.BankResponse;
-import com.marcelo.javabanksys.dto.CreditDebitRequest;
-import com.marcelo.javabanksys.dto.EnquiryRequest;
-import com.marcelo.javabanksys.dto.UserRequest;
+import com.marcelo.javabanksys.dto.*;
 
 public interface UserService {
     BankResponse createAccount(UserRequest userRequest);
@@ -11,4 +8,5 @@ public interface UserService {
     String nameEnquiry(EnquiryRequest request);
     BankResponse creditAccount(CreditDebitRequest request);
     BankResponse debitAccount(CreditDebitRequest request);
+    BankResponse transfer(TransferRequest request);
 }

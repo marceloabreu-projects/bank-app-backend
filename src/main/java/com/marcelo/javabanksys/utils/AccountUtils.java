@@ -18,6 +18,10 @@ public class AccountUtils {
     public static final String NOT_ENOUGH_BALANCE_MESSAGE = "Insufficient balance.";
     public static final String DEBIT_WITHDRAW_SUCCESS_CODE = "007";
     public static final String DEBIT_WITHDRAW_SUCCESS_MESSAGE = "Debit withdrawal successful.";
+    public static final String DESTINATION_ACCOUNT_NOT_EXIST_CODE = "008";
+    public static final String DESTINATION_ACCOUNT_NOT_EXIST_MESSAGE = "Destination account used does not exist. Please type an existing account number.";
+    public static final String TRANSFER_SUCCESS_CODE = "009";
+    public static final String TRANSFER_SUCCESS_MESSAGE = "Transfer was a success!";
     public static String generateAccountNumber(){
         //2023 + 6 random digits
         Year currentYear = Year.now();
