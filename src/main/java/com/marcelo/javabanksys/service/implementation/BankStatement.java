@@ -4,10 +4,12 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.marcelo.javabanksys.dto.EmailDetails;
 import com.marcelo.javabanksys.entity.Transaction;
 import com.marcelo.javabanksys.entity.User;
 import com.marcelo.javabanksys.repository.TransactionRepository;
 import com.marcelo.javabanksys.repository.UserRepository;
+import com.marcelo.javabanksys.service.EmailService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,7 @@ import java.util.List;
 public class BankStatement {
     private TransactionRepository transactionRepository;
     private UserRepository userRepository;
+    private EmailService emailService;
     private static final String FILE = "C:\\Users\\marabreu\\Documents\\BankStatements\\MyStatement.pdf";
 
     public List<Transaction> generateStatement(String accountNumber, String startDate, String endDate) throws FileNotFoundException, DocumentException {
@@ -115,6 +118,15 @@ public class BankStatement {
         document.add(transactionsTable);
 
         document.close();
+
+        EmailDetails emailDetails = EmailDetails.builder()
+                .recipient(user.getEmail())
+                .subject("ACCOUNT STATEMENT")
+                .messageBody("Kindly find your requested account statement down below!")
+                .attachment(FILE)
+                .build();
+
+        emailService.sendEmailWithAttachment(emailDetails);
 
         return transactionList;
     }
