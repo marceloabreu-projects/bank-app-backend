@@ -22,6 +22,5 @@ public class TransactionImpl implements TransactionService {
                 .build();
         transactionRepository.save(transaction);
         System.out.println("Transaction saved successfully");
-
     }
 }
