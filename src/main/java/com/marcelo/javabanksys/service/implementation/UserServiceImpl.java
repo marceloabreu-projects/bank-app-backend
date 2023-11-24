@@ -1,6 +1,8 @@
 package com.marcelo.javabanksys.service.implementation;
 
+import com.marcelo.javabanksys.config.JwtTokenProvider;
 import com.marcelo.javabanksys.dto.*;
+import com.marcelo.javabanksys.entity.Role;
 import com.marcelo.javabanksys.entity.User;
 import com.marcelo.javabanksys.repository.UserRepository;
 import com.marcelo.javabanksys.service.EmailService;
@@ -8,6 +10,9 @@ import com.marcelo.javabanksys.service.TransactionService;
 import com.marcelo.javabanksys.service.UserService;
 import com.marcelo.javabanksys.utils.AccountUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +33,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
 
     @Override
     public BankResponse createAccount(UserRequest userRequest) {
@@ -53,6 +64,7 @@ public class UserServiceImpl implements UserService {
                 .phoneNumber(userRequest.getEmail())
                 .alternativePhoneNumber(userRequest.getAlternativePhoneNumber())
                 .status("ACTIVE")
+                .role(Role.valueOf("ROLE_ADMIN"))
                 .build();
 
         User savedUser = userRepository.save(newUser);
@@ -78,6 +90,26 @@ public class UserServiceImpl implements UserService {
                         .build())
                 .build();
     }
+
+    public BankResponse login(LoginDto loginDto){
+        Authentication authentication = null;
+        authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword())
+        );
+
+        EmailDetails loginAlert = EmailDetails.builder()
+                .subject("You're logged in!")
+                .recipient(loginDto.getEmail())
+                .messageBody("You logged into your account.")
+                .build();
+        emailService.SendEmailAlert(loginAlert);
+
+        return BankResponse.builder()
+                .responseCode("Login Success")
+                .responseMessage(jwtTokenProvider.generateToken(authentication))
+                .build();
+    }
+
 
     @Override
     public BankResponse balanceEnquiry(EnquiryRequest request) {
