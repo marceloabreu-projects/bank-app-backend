@@ -1,11 +1,13 @@
 # Banking Application Backend
 
 <br>
+
 ## Overview
 
 Welcome to the backend repository of our Banking Application developed in Java with Spring Boot! This repository contains the server-side code that powers the core functionalities of our banking system. The application is designed to handle various banking operations, including account creation, login, authentication, debit, credit, transfer, email alerts, and generating banking statements in PDF format.
 
 <br>
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -17,6 +19,7 @@ Welcome to the backend repository of our Banking Application developed in Java w
 - [API Documentation](#api-documentation)
 
 <br>
+
 ## Getting Started
 
 To get started with the backend of our Banking Application, follow these steps:
@@ -27,6 +30,7 @@ To get started with the backend of our Banking Application, follow these steps:
 4. Run the application using the provided scripts or your preferred method.
 
 <br>
+
 ## Features
 
 - **Account Creation, Login & Authentication**: Secure user account creation, login, and authentication with JWT tokens.
@@ -35,6 +39,7 @@ To get started with the backend of our Banking Application, follow these steps:
 - **Generated Banking Statement to PDF**: Generate a PDF banking statement with details of every transaction.
 
 <br>
+
 ## Dependencies
 
 The following dependencies are required to run the backend:
@@ -46,6 +51,7 @@ The following dependencies are required to run the backend:
 - Other dependencies as specified in the `pom.xml` file.
 
 <br>
+
 ## Installation
 
 1. Ensure that Java and Maven are installed on your machine.
@@ -61,6 +67,7 @@ The following dependencies are required to run the backend:
    mvn clean install
 
 <br>  
+
 ## Configuration
 
 Configuration files are located in the `src/main/resources` directory. Customize the configuration according to your environment:
@@ -68,6 +75,7 @@ Configuration files are located in the `src/main/resources` directory. Customize
 - `application.properties`: Default configuration.
 
 <br>
+
 ## Usage
 
 Run the application using:
