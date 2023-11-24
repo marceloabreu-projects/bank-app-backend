@@ -64,7 +64,8 @@ Configuration files are located in the `src/main/resources` directory. Customize
 
 Run the application using:
 
-```bash
-mvn spring-boot:run
+   ```bash
+   mvn spring-boot:run
+   ```
 
 The server will be running at http://localhost:8080 by default. You can change the port and other configurations in the application.properties file.
