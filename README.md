@@ -85,3 +85,54 @@ Run the application using:
    ```
 
 The server will be running at http://localhost:8080 by default. You can change the port and other configurations in the application.properties file.
+
+<br>
+
+## API Documentation
+
+### POST
+
+- **Create New User**
+
+  ```POST
+  http://localhost:8080/api/user
+
+- **Credit User Account**
+
+  ```POST
+  http://localhost:8080/api/user/credit
+
+- **Debit User Account**
+
+  ```POST
+  http://localhost:8080/api/user/debit
+
+- **Transfer Between Accounts**
+
+  ```POST
+  http://localhost:8080/api/user/transfer
+
+- **Login**
+
+  ```POST
+  http://localhost:8080/api/user/login
+
+<br>
+
+### GET
+
+- **Name Enquiry**
+
+  ```GET
+  http://localhost:8080/api/user/nameEnquiry
+
+- **Balance Enquiry**
+
+  ```GET
+  http://localhost:8080/api/user/balanceEnquiry
+
+- **Generate Bank Statement**
+
+  ```GET
+  http://localhost:8080/bankStatement
+
