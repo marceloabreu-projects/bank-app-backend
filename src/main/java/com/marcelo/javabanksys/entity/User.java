@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class User {
     //Optimize by adding verifications with lombok for more fields!
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +29,7 @@ public class User {
     private String accountNumber;
     private BigDecimal accountBalance;
     private String email;
+    private String password;
     private String phoneNumber;
     private String alternativePhoneNumber;
     private String status;
