@@ -54,3 +54,17 @@ The following dependencies are required to run the backend:
    cd banking-app-backend
    mvn clean install
   
+## Configuration
+
+Configuration files are located in the `src/main/resources` directory. Customize the configuration according to your environment:
+
+- `application.properties`: Default configuration.
+
+## Usage
+
+Run the application using:
+
+```bash
+mvn spring-boot:run
+
+The server will be running at http://localhost:8080 by default. You can change the port and other configurations in the application.properties file.
