@@ -1,8 +1,10 @@
 # Banking Application Backend
 
+
 ## Overview
 
 Welcome to the backend repository of our Banking Application developed in Java with Spring Boot! This repository contains the server-side code that powers the core functionalities of our banking system. The application is designed to handle various banking operations, including account creation, login, authentication, debit, credit, transfer, email alerts, and generating banking statements in PDF format.
+
 
 ## Table of Contents
 
@@ -14,6 +16,7 @@ Welcome to the backend repository of our Banking Application developed in Java w
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
 
+
 ## Getting Started
 
 To get started with the backend of our Banking Application, follow these steps:
@@ -23,12 +26,14 @@ To get started with the backend of our Banking Application, follow these steps:
 3. Configure the application (see [Configuration](#configuration)).
 4. Run the application using the provided scripts or your preferred method.
 
+
 ## Features
 
 - **Account Creation, Login & Authentication**: Secure user account creation, login, and authentication with JWT tokens.
 - **Debit, Credit, Transfer**: Perform various transactions, including debit, credit, and transfers between user accounts.
 - **Email Service with Alerts**: Send email alerts for transactions and login attempts.
 - **Generated Banking Statement to PDF**: Generate a PDF banking statement with details of every transaction.
+
 
 ## Dependencies
 
@@ -39,6 +44,7 @@ The following dependencies are required to run the backend:
 - Spring Security
 - iText (for PDF generation)
 - Other dependencies as specified in the `pom.xml` file.
+
 
 ## Installation
 
@@ -53,12 +59,14 @@ The following dependencies are required to run the backend:
    ```bash
    cd banking-app-backend
    mvn clean install
+
   
 ## Configuration
 
 Configuration files are located in the `src/main/resources` directory. Customize the configuration according to your environment:
 
 - `application.properties`: Default configuration.
+
 
 ## Usage
 
