@@ -71,10 +71,14 @@ The following dependencies are required to run the backend:
 ## Database
 
 The backend of our Banking Application uses the H2 Database for local development. However, you can easily swap it for any SQL or other databases of your choice.
+<br>
+
 
 ### Database - Configuration
 
 The database configuration is specified in the `application.properties` file. You can customize the settings based on your database preferences:
+<br>
+
 
 ```
 properties
@@ -90,7 +94,10 @@ spring.h2.console.path=/h2-console
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
 ```
+<br>
+
 Adjust the `spring.datasource.url`, `spring.datasource.username`, `spring.datasource.password`, and other properties based on your database configuration.
+
 If you decide to use a different database, update the dependencies and configurations accordingly in the `pom.xml` file and `application.properties`.
 
 <br>
