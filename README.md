@@ -76,7 +76,8 @@ The backend of our Banking Application uses the H2 Database for local developmen
 
 The database configuration is specified in the `application.properties` file. You can customize the settings based on your database preferences:
 
-```properties```
+```
+properties
 # H2 Database Configuration
 spring.datasource.url=jdbc:h2:mem:bankingdb
 spring.datasource.driverClassName=org.h2.Driver
@@ -88,8 +89,9 @@ spring.h2.console.path=/h2-console
 # Hibernate Configuration
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
-
-
+```
+Adjust the `spring.datasource.url`, `spring.datasource.username`, `spring.datasource.password`, and other properties based on your database configuration.
+If you decide to use a different database, update the dependencies and configurations accordingly in the `pom.xml` file and `application.properties`.
 
 <br>
 
