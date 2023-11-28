@@ -14,7 +14,7 @@ Welcome to the backend repository of our Banking Application developed in Java w
 - [Features](#features)
 - [Dependencies](#dependencies)
 - [Installation](#installation)
-- [Configuration](#configuration)
+- [Database](#database)
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
 
@@ -66,13 +66,30 @@ The following dependencies are required to run the backend:
    cd banking-app-backend
    mvn clean install
 
-<br>  
+<br>
 
-## Configuration
+## Database
 
-Configuration files are located in the `src/main/resources` directory. Customize the configuration according to your environment:
+The backend of our Banking Application uses the H2 Database for local development. However, you can easily swap it for any SQL or other databases of your choice.
 
-- `application.properties`: Default configuration.
+### Database - Configuration
+
+The database configuration is specified in the `application.properties` file. You can customize the settings based on your database preferences:
+
+```properties```
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:bankingdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# Hibernate Configuration
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+
 
 <br>
 
